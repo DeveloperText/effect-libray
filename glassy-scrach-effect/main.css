@@ -76,14 +76,7 @@ header .grid a:hover {
 }
 
 .main-sect .grid .col:first-child p {
-  -webkit-animation: fade_up 2s 0.8s ease-out forwards;
-          animation: fade_up 2s 0.8s ease-out forwards;
   opacity: 0;
-}
-
-.main-sect .grid .col:first-child a.primary-button {
-  -webkit-animation: fade_up 2s 0.9s ease-out forwards;
-          animation: fade_up 2s 0.9s ease-out forwards;
 }
 
 .main-sect .grid .col:last-child {
@@ -102,26 +95,6 @@ header .grid a:hover {
       grid-template-rows: auto 180px;
   grid-gap: 10px;
   opacity: 0;
-}
-
-.main-sect .grid .col:last-child .box:nth-child(1) {
-  -webkit-animation: fade_up 1s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
-          animation: fade_up 1s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
-}
-
-.main-sect .grid .col:last-child .box:nth-child(2) {
-  -webkit-animation: fade_up 1s 0.3s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
-          animation: fade_up 1s 0.3s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
-}
-
-.main-sect .grid .col:last-child .box:nth-child(3) {
-  -webkit-animation: fade_up 1s 0.6s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
-          animation: fade_up 1s 0.6s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
-}
-
-.main-sect .grid .col:last-child .box:nth-child(4) {
-  -webkit-animation: fade_up 1s 0.9s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
-          animation: fade_up 1s 0.9s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
 }
 
 .main-sect .grid .col:last-child .box p {
@@ -197,7 +170,7 @@ header .grid a:hover {
           transform: scale(1.1);
 }
 
-.main-sect .crached-background {
+.main-sect .crached-background-rounded {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -207,14 +180,14 @@ header .grid a:hover {
   overflow: hidden;
 }
 
-.main-sect .crached-background .main-bg,
-.main-sect .crached-background .sub-bg {
+.main-sect .crached-background-rounded .main-bg,
+.main-sect .crached-background-rounded .sub-bg {
   background: url("./img/main-bg.jpg") no-repeat;
   background-size: cover;
   background-position: center;
 }
 
-.main-sect .crached-background .main-bg {
+.main-sect .crached-background-rounded .main-bg {
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -222,7 +195,7 @@ header .grid a:hover {
   left: 0;
 }
 
-.main-sect .crached-background .crach {
+.main-sect .crached-background-rounded .crach {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -231,37 +204,22 @@ header .grid a:hover {
   overflow: hidden;
 }
 
-.main-sect .crached-background .crach:nth-child(2) {
-  -webkit-animation: animate-crach_2 3s ease-out forwards;
-          animation: animate-crach_2 3s ease-out forwards;
-}
-
-.main-sect .crached-background .crach:nth-child(2) .sub-bg {
+.main-sect .crached-background-rounded .crach:nth-child(2) .sub-bg {
   -webkit-transform: scale(1.2) rotateZ(1deg);
           transform: scale(1.2) rotateZ(1deg);
 }
 
-.main-sect .crached-background .crach:nth-child(3) {
-  -webkit-animation: animate-crach_3 4s ease-out forwards;
-          animation: animate-crach_3 4s ease-out forwards;
-}
-
-.main-sect .crached-background .crach:nth-child(3) .sub-bg {
+.main-sect .crached-background-rounded .crach:nth-child(3) .sub-bg {
   -webkit-transform: scale(1.4) rotateZ(2deg);
           transform: scale(1.4) rotateZ(2deg);
 }
 
-.main-sect .crached-background .crach:nth-child(4) {
-  -webkit-animation: animate-crach_4 5s ease-out forwards;
-          animation: animate-crach_4 5s ease-out forwards;
-}
-
-.main-sect .crached-background .crach:nth-child(4) .sub-bg {
+.main-sect .crached-background-rounded .crach:nth-child(4) .sub-bg {
   -webkit-transform: scale(1.6) rotateZ(3deg);
           transform: scale(1.6) rotateZ(3deg);
 }
 
-.main-sect .crached-background .crach .sub-bg {
+.main-sect .crached-background-rounded .crach .sub-bg {
   height: 100%;
   width: 100%;
 }
@@ -409,12 +367,12 @@ header .grid a:hover {
   }
 }
 
-.splited-text {
+.splited_text_animate {
   -webkit-animation: fade_up 2s ease-out forwards;
           animation: fade_up 2s ease-out forwards;
 }
 
-.splited-text span {
+.splited_text_animate span {
   opacity: 0;
   display: inline;
   position: relative;
