@@ -1,0 +1,422 @@
+header {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  z-index: 10;
+}
+
+header .grid {
+  width: 1400px;
+  height: 100%;
+  padding: 0 50px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header .grid p {
+  height: 100%;
+  line-height: 50px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 0;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+header .grid a {
+  height: 100%;
+  display: block;
+  background-color: transparent;
+  outline: 3px solid white;
+  color: white;
+  line-height: 40px;
+  padding: 0 1.8em;
+  text-decoration: none;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+header .grid a:hover {
+  background-color: white;
+  color: black;
+}
+
+.main-sect {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.main-sect .grid {
+  width: 1400px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 50px;
+  margin: 0 auto;
+}
+
+.main-sect .grid .col {
+  width: 50%;
+}
+
+.main-sect .grid .col:first-child p {
+  -webkit-animation: fade_up 2s 0.8s ease-out forwards;
+          animation: fade_up 2s 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.main-sect .grid .col:first-child a.primary-button {
+  -webkit-animation: fade_up 2s 0.9s ease-out forwards;
+          animation: fade_up 2s 0.9s ease-out forwards;
+}
+
+.main-sect .grid .col:last-child {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+}
+
+.main-sect .grid .col:last-child .box {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 180px;
+      grid-template-rows: auto 180px;
+  grid-gap: 10px;
+  opacity: 0;
+}
+
+.main-sect .grid .col:last-child .box:nth-child(1) {
+  -webkit-animation: fade_up 1s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+          animation: fade_up 1s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+}
+
+.main-sect .grid .col:last-child .box:nth-child(2) {
+  -webkit-animation: fade_up 1s 0.3s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+          animation: fade_up 1s 0.3s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+}
+
+.main-sect .grid .col:last-child .box:nth-child(3) {
+  -webkit-animation: fade_up 1s 0.6s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+          animation: fade_up 1s 0.6s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+}
+
+.main-sect .grid .col:last-child .box:nth-child(4) {
+  -webkit-animation: fade_up 1s 0.9s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+          animation: fade_up 1s 0.9s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+}
+
+.main-sect .grid .col:last-child .box p {
+  width: 100%;
+  margin-bottom: 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main-sect .grid .col:last-child .box p span {
+  width: auto;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.main-sect .grid .col:last-child .box p::after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  display: block;
+  margin-left: 20px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.main-sect .grid .col:last-child .box .img_cont {
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-sect .grid .col:last-child .box .img_cont img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.main-sect .grid .col:last-child .box .img_cont::after {
+  content: "--- View project";
+  padding: 13px;
+  width: 100%;
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  color: white;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+}
+
+.main-sect .grid .col:last-child .box .img_cont:hover::after {
+  bottom: 0;
+  opacity: 1;
+}
+
+.main-sect .grid .col:last-child .box .img_cont:hover img {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.main-sect .crached-background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.main-sect .crached-background .main-bg,
+.main-sect .crached-background .sub-bg {
+  background: url("/img/main-bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.main-sect .crached-background .main-bg {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.main-sect .crached-background .crach {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.main-sect .crached-background .crach:nth-child(2) {
+  -webkit-animation: animate-crach_2 3s ease-out forwards;
+          animation: animate-crach_2 3s ease-out forwards;
+}
+
+.main-sect .crached-background .crach:nth-child(2) .sub-bg {
+  -webkit-transform: scale(1.2) rotateZ(1deg);
+          transform: scale(1.2) rotateZ(1deg);
+}
+
+.main-sect .crached-background .crach:nth-child(3) {
+  -webkit-animation: animate-crach_3 4s ease-out forwards;
+          animation: animate-crach_3 4s ease-out forwards;
+}
+
+.main-sect .crached-background .crach:nth-child(3) .sub-bg {
+  -webkit-transform: scale(1.4) rotateZ(2deg);
+          transform: scale(1.4) rotateZ(2deg);
+}
+
+.main-sect .crached-background .crach:nth-child(4) {
+  -webkit-animation: animate-crach_4 5s ease-out forwards;
+          animation: animate-crach_4 5s ease-out forwards;
+}
+
+.main-sect .crached-background .crach:nth-child(4) .sub-bg {
+  -webkit-transform: scale(1.6) rotateZ(3deg);
+          transform: scale(1.6) rotateZ(3deg);
+}
+
+.main-sect .crached-background .crach .sub-bg {
+  height: 100%;
+  width: 100%;
+}
+
+.primary-button {
+  font-size: 1.1rem;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  padding: 0.8em 1.8em;
+  margin-top: 20px;
+  display: inline-block;
+  opacity: 0;
+}
+
+.primary-button::after {
+  content: "";
+  height: 0.8rem;
+  width: 30px;
+  margin-left: 10px;
+  color: black;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  display: inline-block;
+  background: url("/img/arrow-long-right.svg") no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+}
+
+.primary-button:hover::after {
+  margin-left: 30px;
+}
+
+@-webkit-keyframes animate-crach_2 {
+  from {
+    -webkit-clip-path: circle(40% at 12% 6%);
+            clip-path: circle(40% at 12% 6%);
+  }
+  to {
+    -webkit-clip-path: circle(50% at 14% 8%);
+            clip-path: circle(50% at 14% 8%);
+  }
+}
+
+@keyframes animate-crach_2 {
+  from {
+    -webkit-clip-path: circle(40% at 12% 6%);
+            clip-path: circle(40% at 12% 6%);
+  }
+  to {
+    -webkit-clip-path: circle(50% at 14% 8%);
+            clip-path: circle(50% at 14% 8%);
+  }
+}
+
+@-webkit-keyframes animate-crach_3 {
+  from {
+    -webkit-clip-path: circle(30% at 8% 5%);
+            clip-path: circle(30% at 8% 5%);
+  }
+  to {
+    -webkit-clip-path: circle(40% at 10% 8%);
+            clip-path: circle(40% at 10% 8%);
+  }
+}
+
+@keyframes animate-crach_3 {
+  from {
+    -webkit-clip-path: circle(30% at 8% 5%);
+            clip-path: circle(30% at 8% 5%);
+  }
+  to {
+    -webkit-clip-path: circle(40% at 10% 8%);
+            clip-path: circle(40% at 10% 8%);
+  }
+}
+
+@-webkit-keyframes animate-crach_4 {
+  from {
+    -webkit-clip-path: circle(15% at 6% 4%);
+            clip-path: circle(15% at 6% 4%);
+  }
+  to {
+    -webkit-clip-path: circle(25% at 8% 8%);
+            clip-path: circle(25% at 8% 8%);
+  }
+}
+
+@keyframes animate-crach_4 {
+  from {
+    -webkit-clip-path: circle(15% at 6% 4%);
+            clip-path: circle(15% at 6% 4%);
+  }
+  to {
+    -webkit-clip-path: circle(25% at 8% 8%);
+            clip-path: circle(25% at 8% 8%);
+  }
+}
+
+@-webkit-keyframes fade_up {
+  from {
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fade_up {
+  from {
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade_up_splited {
+  from {
+    top: 50px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fade_up_splited {
+  from {
+    top: 50px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.splited-text {
+  -webkit-animation: fade_up 2s ease-out forwards;
+          animation: fade_up 2s ease-out forwards;
+}
+
+.splited-text span {
+  opacity: 0;
+  display: inline;
+  position: relative;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,307 @@
+header {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  z-index: 10;
+
+  .grid {
+    width: 1400px;
+    height: 100%;
+    padding: 0 50px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      height: 100%;
+      line-height: 50px;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+    a {
+      height: 100%;
+      display: block;
+      background-color: transparent;
+      outline: 3px solid white;
+      color: rgb(255, 255, 255);
+      line-height: 40px;
+      padding: 0 1.8em;
+      text-decoration: none;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: white;
+        color: rgb(0, 0, 0);
+      }
+    }
+  }
+}
+
+.main-sect {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+
+  .grid {
+    width: 1400px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    margin: 0 auto;
+
+    .col {
+      width: 50%;
+
+      &:first-child {
+        p {
+          animation: fade_up 2s 0.8s ease-out forwards;
+          opacity: 0;
+        }
+        a.primary-button {
+          animation: fade_up 2s 0.9s ease-out forwards;
+        }
+      }
+      &:last-child {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 50px;
+
+        .box {
+          width: 100%;
+          display: grid;
+          grid-template-rows: auto 180px;
+          grid-gap: 10px;
+          opacity: 0;
+
+          &:nth-child(1) {
+            animation: fade_up 1s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+          }
+          &:nth-child(2) {
+            animation: fade_up 1s 0.3s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+          }
+          &:nth-child(3) {
+            animation: fade_up 1s 0.6s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+          }
+          &:nth-child(4) {
+            animation: fade_up 1s 0.9s cubic-bezier(0.45, 0, 0.5, 0.8) forwards;
+          }
+          p {
+            width: 100%;
+            margin-bottom: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            span {
+              width: auto;
+              flex-shrink: 0;
+            }
+            &::after {
+              content: "";
+              height: 2px;
+              width: 100%;
+              display: block;
+              margin-left: 20px;
+              background: rgba(255, 255, 255, 0.5);
+            }
+          }
+          .img_cont {
+            height: 100%;
+            width: 100%;
+            display: block;
+            position: relative;
+            overflow: hidden;
+
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+              object-position: center;
+              transition: 0.5s;
+            }
+            &::after {
+              content: "--- View project";
+              padding: 13px;
+              width: 100%;
+              position: absolute;
+              bottom: -100%;
+              left: 0;
+              color: white;
+              font-size: 0.9rem;
+              background: rgba(0, 0, 0, 0.3);
+              box-sizing: border-box;
+              transition: 0.3s;
+              opacity: 0;
+            }
+            &:hover {
+              &::after {
+                bottom: 0;
+                opacity: 1;
+              }
+              img {
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .crached-background {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+
+    .main-bg,
+    .sub-bg {
+      background: url("/img/main-bg.jpg") no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    .main-bg {
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .crach {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+
+      &:nth-child(2) {
+        animation: animate-crach_2 3s ease-out forwards;
+
+        .sub-bg {
+          transform: scale(1.2) rotateZ(1deg);
+        }
+      }
+      &:nth-child(3) {
+        animation: animate-crach_3 4s ease-out forwards;
+
+        .sub-bg {
+          transform: scale(1.4) rotateZ(2deg);
+        }
+      }
+      &:nth-child(4) {
+        animation: animate-crach_4 5s ease-out forwards;
+
+        .sub-bg {
+          transform: scale(1.6) rotateZ(3deg);
+        }
+      }
+      .sub-bg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.primary-button {
+  font-size: 1.1rem;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 0.8em 1.8em;
+  margin-top: 20px;
+  display: inline-block;
+  opacity: 0;
+
+  &::after {
+    content: "";
+    height: 0.8rem;
+    width: 30px;
+    margin-left: 10px;
+    color: rgb(0, 0, 0);
+    transition: 0.2s;
+    display: inline-block;
+    background: url("/img/arrow-long-right.svg") no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+  }
+  &:hover {
+    &::after {
+      margin-left: 30px;
+    }
+  }
+}
+
+// Animations ----------------
+@keyframes animate-crach_2 {
+  from {
+    clip-path: circle(40% at 12% 6%);
+  }
+  to {
+    clip-path: circle(50% at 14% 8%);
+  }
+}
+@keyframes animate-crach_3 {
+  from {
+    clip-path: circle(30% at 8% 5%);
+  }
+  to {
+    clip-path: circle(40% at 10% 8%);
+  }
+}
+
+@keyframes animate-crach_4 {
+  from {
+    clip-path: circle(15% at 6% 4%);
+  }
+  to {
+    clip-path: circle(25% at 8% 8%);
+  }
+}
+
+// Fade ----
+@keyframes fade_up {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+// ------ Splited text
+@keyframes fade_up_splited {
+  from {
+    // transform: translateY(50px);
+    top: 50px;
+    opacity: 0;
+  }
+  to {
+    // transform: translateY(0px);
+    top: 0;
+    opacity: 1;
+  }
+}
+.splited-text {
+  animation: fade_up 2s ease-out forwards;
+  // opacity: 0;
+  // position: absolute;
+  span {
+    opacity: 0;
+    display: inline;
+    position: relative;
+  }
+}
