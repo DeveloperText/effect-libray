@@ -166,7 +166,7 @@ header {
 
     .main-bg,
     .sub-bg {
-      background: url("/img/main-bg.jpg") no-repeat;
+      background: url("./img/main-bg.jpg") no-repeat;
       background-size: cover;
       background-position: center;
     }
@@ -232,7 +232,7 @@ header {
     color: rgb(0, 0, 0);
     transition: 0.2s;
     display: inline-block;
-    background: url("/img/arrow-long-right.svg") no-repeat;
+    background: url("./img/arrow-long-right.svg") no-repeat;
     background-position: center;
     background-size: 100% auto;
   }

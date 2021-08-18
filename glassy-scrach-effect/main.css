@@ -209,7 +209,7 @@ header .grid a:hover {
 
 .main-sect .crached-background .main-bg,
 .main-sect .crached-background .sub-bg {
-  background: url("/img/main-bg.jpg") no-repeat;
+  background: url("./img/main-bg.jpg") no-repeat;
   background-size: cover;
   background-position: center;
 }
@@ -286,7 +286,7 @@ header .grid a:hover {
   -webkit-transition: 0.2s;
   transition: 0.2s;
   display: inline-block;
-  background: url("/img/arrow-long-right.svg") no-repeat;
+  background: url("./img/arrow-long-right.svg") no-repeat;
   background-position: center;
   background-size: 100% auto;
 }
