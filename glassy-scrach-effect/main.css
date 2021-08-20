@@ -325,6 +325,24 @@ header .grid a:hover {
   width: 100%;
 }
 
+.main-sect .scroll_indicator {
+  width: 1400px;
+  padding: 0 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.main-sect .scroll_indicator p {
+  -webkit-animation: marque-down 1.5s infinite;
+          animation: marque-down 1.5s infinite;
+  margin: 0;
+}
+
 .primary-button {
   font-size: 1.1rem;
   color: black;
@@ -409,6 +427,44 @@ footer p {
   to {
     -webkit-clip-path: circle(40% at 10% 8%);
             clip-path: circle(40% at 10% 8%);
+  }
+}
+
+@-webkit-keyframes marque-down {
+  0% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  30% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  70% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  100% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+}
+
+@keyframes marque-down {
+  0% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  30% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  70% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  100% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
   }
 }
 

@@ -278,6 +278,22 @@ header {
       }
     }
   }
+  .scroll_indicator {
+    width: 1400px;
+    padding: 0 50px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    p {
+      animation: marque-down 1.5s infinite;
+      margin: 0;
+    }
+  }
 }
 
 .primary-button {
@@ -338,6 +354,21 @@ footer {
   }
   to {
     clip-path: circle(40% at 10% 8%);
+  }
+}
+
+@keyframes marque-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  30% {
+    transform: translateY(0%);
+  }
+  70% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
   }
 }
 
