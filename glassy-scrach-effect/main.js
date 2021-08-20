@@ -1,23 +1,21 @@
 "use strict";
 
-// ---------- Init Values
+// ---------- Init Values --------------
 const innerHeight = window.innerHeight;
 const innerWidth = window.innerWidth;
 const scrollAnimateOffsetHeight = innerHeight - 50;
-const scrollAnimateOffsetHeight_3 = innerHeight - innerHeight / 3;
-let scrollPositionY = window.scrollY;
-window.addEventListener("scroll", function () {
-  scrollPositionY = window.scrollY;
-});
+const scrollAnimateOffsetHeight_2 = innerHeight - innerHeight / 4;
 
-// ---------- Splited Text Effect----------
+// ---------- Splited Text Effect & Multiple element's animation----------
 const allSplitedTextEls = document.querySelectorAll(".splited_text_animate");
 const allMultipleAnimateEls = document.querySelectorAll(".multiple_el_animate");
 const fadeUpEls = document.querySelectorAll(".fade_up_el");
-const crachedBgRoundedEls = document.querySelectorAll(
-  ".crached-background-rounded"
+const scrachedBgEls = document.querySelectorAll(".scrached-background");
+const allMultipleAnimateElsHover = document.querySelectorAll(
+  ".multiple_el_animate_hover"
 );
 
+// ---------- For Splited Text Effect----------
 allSplitedTextEls.forEach(function (splitedEl) {
   const text = splitedEl.textContent;
   splitedEl.textContent = "";
@@ -27,123 +25,118 @@ allSplitedTextEls.forEach(function (splitedEl) {
   });
 });
 
-const animateEl = function (mainEls, header, extentions) {
+// ---------- For anomate 1 element on scroll ----------
+const animateEl = function (...mainEls) {
   mainEls.forEach(function (mainEl) {
     let isAnimated = mainEl.dataset.isAnimated ?? false;
     if (!isAnimated) {
       if (mainEl.getBoundingClientRect().top <= scrollAnimateOffsetHeight) {
-        const animationDelay = mainEl.dataset.animate_delay ?? "0ms";
-        mainEl.style.animation = `${header} ${animationDelay} ${extentions}`;
+        const animation_delay = mainEl.dataset.animation_delay ?? 0;
+        const animationClass = mainEl.dataset.animation_class;
+        if (animation_delay)
+          setTimeout(function () {
+            mainEl.classList.add(animationClass);
+          }, animation_delay);
+        else mainEl.classList.add(animationClass);
+        mainEl.dataset.isAnimated = true;
       }
     }
   });
 };
 
-const animateIndividualEl = function (mainEl, header, extentions) {
-  let isAnimated = mainEl.dataset.isAnimated ?? false;
-  if (!isAnimated) {
-    if (mainEl.getBoundingClientRect().top <= scrollAnimateOffsetHeight) {
-      const animationDelay = mainEl.dataset.animate_delay ?? "0ms";
-      mainEl.style.animation = `${header} ${animationDelay} ${extentions}`;
-    }
-  }
-};
-
-const callMultipleAnimateEl = function (
-  mainParentEls,
-  header,
-  delayIncrement,
-  extentions,
-  initTimer
-) {
+// ---------- For Multiple element's animation----------
+const callMultipleAnimateEl = function (...mainParentEls) {
   mainParentEls.forEach(function (mainParentEl) {
-    let isAnimated = mainParentEl.dataset.isAnimated ?? false;
-    if (!isAnimated) {
-      if (
-        mainParentEl.getBoundingClientRect().top <= scrollAnimateOffsetHeight_3
-      ) {
-        mainParentEl.dataset.isAnimated = true;
-        const overallDelay = mainParentEl.dataset.overall_delay ?? 0;
-        setTimeout(function () {
-          const childrenEls = mainParentEl.children;
-          let timer = initTimer ?? 0;
-          for (let i = 0; i < childrenEls.length; i++) {
-            childrenEls[
-              i
-            ].style.animation = `${header} ${timer}ms ${extentions}`;
-            timer += delayIncrement;
+    if (
+      mainParentEl.getBoundingClientRect().top <= scrollAnimateOffsetHeight_2
+    ) {
+      const overallDelay = mainParentEl.dataset.overall_delay ?? 0;
+      const animation_delay = mainParentEl.dataset.animation_delay ?? 0;
+      const animationClass = mainParentEl.dataset.animation_class;
+      let timer = 0;
+      const callAnimation = function () {
+        const childrenEls = mainParentEl.children;
+        for (let i = 0; i < childrenEls.length; i++) {
+          const childrenEl = childrenEls[i];
+          let isAnimated = childrenEl.dataset.isAnimated ?? false;
+          if (!isAnimated) {
+            if (
+              childrenEl.getBoundingClientRect().top <=
+              scrollAnimateOffsetHeight_2
+            ) {
+              childrenEl.dataset.isAnimated = true;
+              setTimeout(function () {
+                childrenEl.classList.add(animationClass);
+              }, timer);
+              timer += Number(animation_delay);
+            }
           }
+        }
+      };
+      if (overallDelay)
+        setTimeout(function () {
+          callAnimation();
+          mainParentEl.dataset.overall_delay = 0;
         }, overallDelay);
-      }
+      else callAnimation();
+      setTimeout(function () {
+        timer = 0;
+      }, 1000);
     }
   });
 };
 
+// ---------- For Multiple element's animation Hover ----------
+const callMultipleAnimateElHover = function (...mainParentEls) {
+  mainParentEls.forEach(function (mainParentEl) {
+    const animation_delay = mainParentEl.dataset.animation_delay ?? 0;
+    const hover_parentEl_num = mainParentEl.dataset.parent_el ?? 1;
+    const animationClass = mainParentEl.dataset.animation_class;
+    let hoverParentEl = mainParentEl;
+    for (let i = 1; i <= hover_parentEl_num; i++) {
+      hoverParentEl = hoverParentEl.parentElement;
+    }
+    const callAnimation = function (addClass) {
+      let timer = 0;
+      const childrenEls = mainParentEl.children;
+      for (let i = 0; i < childrenEls.length; i++) {
+        const childrenEl = childrenEls[i];
+        setTimeout(function () {
+          if (addClass) childrenEl.classList.add(animationClass);
+          else childrenEl.classList.remove(animationClass);
+        }, timer);
+        timer += Number(animation_delay);
+      }
+      timer = 0;
+    };
+    hoverParentEl.addEventListener("mouseover", callAnimation);
+    hoverParentEl.addEventListener("mouseout", function () {
+      callAnimation(false);
+    });
+  });
+};
+
+// ------ call the function -----
+// ---------- Now calling the functions on scroll ----------
 window.addEventListener("scroll", function () {
-  callMultipleAnimateEl(
-    allSplitedTextEls,
-    "fade_up_splited 0.3s",
-    30,
-    "ease-out forwards"
-  );
-  callMultipleAnimateEl(
-    allMultipleAnimateEls,
-    "fade_up 0.8s",
-    300,
-    "cubic-bezier(0.45, 0, 0.5, 0.8) forwards"
-  );
-  animateEl(fadeUpEls, "fade_up 1.5s", "ease-out forwards");
-  crachedBgRoundedEls.forEach(function (crachedBgRoundedEl) {
-    const childrenEls = crachedBgRoundedEl.children;
-    animateIndividualEl(
-      childrenEls[1],
-      "animate-crach_2 3s",
-      "ease-out forwards"
-    );
-    animateIndividualEl(
-      childrenEls[2],
-      "animate-crach_3 4s",
-      "ease-out forwards"
-    );
-    animateIndividualEl(
-      childrenEls[3],
-      "animate-crach_4 5s",
-      "ease-out forwards"
-    );
+  // const animateOnScroll = setTimeout(function () {
+  scrachedBgEls.forEach(function (scrachedBgRoundedEl) {
+    const childrenEls = scrachedBgRoundedEl.children;
+    animateEl(childrenEls[1], childrenEls[2], childrenEls[3]);
   });
+  animateEl(...fadeUpEls);
+  callMultipleAnimateEl(...allSplitedTextEls, ...allMultipleAnimateEls);
+  // }, 300);
+  // this.clearTimeout(animateOnScroll);
 });
 
-window.addEventListener("load", function () {
-  callMultipleAnimateEl(
-    allSplitedTextEls,
-    "fade_up_splited 0.3s",
-    30,
-    "ease-out forwards"
-  );
-  callMultipleAnimateEl(
-    allMultipleAnimateEls,
-    "fade_up 0.8s",
-    300,
-    "cubic-bezier(0.45, 0, 0.5, 0.8) forwards"
-  );
-  animateEl(fadeUpEls, "fade_up 1.5s", "ease-out forwards");
+// ---------- Now calling the functions on hover ----------
+callMultipleAnimateElHover(...allMultipleAnimateElsHover);
 
-  crachedBgRoundedEls.forEach(function (crachedBgRoundedEl) {
-    const childrenEls = crachedBgRoundedEl.children;
-    animateIndividualEl(
-      childrenEls[1],
-      "animate-crach_2 3s",
-      "ease-out forwards"
-    );
-    animateIndividualEl(
-      childrenEls[2],
-      "animate-crach_3 4s",
-      "ease-out forwards"
-    );
-    animateIndividualEl(
-      childrenEls[3],
-      "animate-crach_4 5s",
-      "ease-out forwards"
-    );
-  });
-});
+// ---------- calling the initial functions on load ----------
+setTimeout(function () {
+  callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
+  animateEl(fadeUpEls[0], fadeUpEls[1]);
+  const childrenEls = scrachedBgEls[0].children;
+  animateEl(childrenEls[1], childrenEls[2], childrenEls[3]);
+}, 600);

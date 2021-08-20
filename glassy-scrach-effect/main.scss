@@ -51,16 +51,22 @@ header {
   .grid {
     width: 1400px;
     height: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 0 50px;
     margin: 0 auto;
 
     .col {
-      width: 50%;
+      width: 100%;
 
       &:first-child {
+        padding-right: 30px;
+
         p {
+          opacity: 0;
+        }
+        .primary-button {
           opacity: 0;
         }
       }
@@ -69,68 +75,150 @@ header {
         grid-template-columns: 1fr 1fr;
         grid-gap: 50px;
 
-        .box {
-          width: 100%;
-          display: grid;
-          grid-template-rows: auto 180px;
-          grid-gap: 10px;
-          opacity: 0;
-
-          p {
+        &.box-cont {
+          .box {
             width: 100%;
-            margin-bottom: 0;
-            position: relative;
-            display: flex;
-            align-items: center;
+            display: grid;
+            grid-template-rows: auto 180px;
+            grid-gap: 10px;
+            opacity: 0;
 
-            span {
-              width: auto;
-              flex-shrink: 0;
-            }
-            &::after {
-              content: "";
-              height: 2px;
+            p {
               width: 100%;
-              display: block;
-              margin-left: 20px;
-              background: rgba(255, 255, 255, 0.5);
-            }
-          }
-          .img_cont {
-            height: 100%;
-            width: 100%;
-            display: block;
-            position: relative;
-            overflow: hidden;
+              margin-bottom: 0;
+              position: relative;
+              display: flex;
+              align-items: center;
 
-            img {
+              span {
+                width: auto;
+                flex-shrink: 0;
+              }
+              &::after {
+                content: "";
+                height: 2px;
+                width: 20%;
+                display: block;
+                margin-left: 20px;
+                background: rgba(255, 255, 255, 0.5);
+              }
+            }
+            .img_cont {
               height: 100%;
               width: 100%;
-              object-fit: cover;
-              object-position: center;
-              transition: 0.5s;
-            }
-            &::after {
-              content: "--- View project";
-              padding: 13px;
-              width: 100%;
-              position: absolute;
-              bottom: -100%;
-              left: 0;
-              color: white;
-              font-size: 0.9rem;
-              background: rgba(0, 0, 0, 0.3);
-              box-sizing: border-box;
-              transition: 0.3s;
-              opacity: 0;
-            }
-            &:hover {
-              &::after {
-                bottom: 0;
-                opacity: 1;
-              }
+              display: block;
+              position: relative;
+              overflow: hidden;
+
               img {
-                transform: scale(1.1);
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+                transition: 0.5s;
+              }
+              &::after {
+                content: "- View project";
+                padding: 13px;
+                width: 100%;
+                position: absolute;
+                bottom: -100%;
+                left: 0;
+                color: white;
+                font-size: 0.9rem;
+                background: rgba(0, 0, 0, 0.3);
+                box-sizing: border-box;
+                transition: 0.3s;
+                opacity: 0;
+              }
+              &:hover {
+                &::after {
+                  bottom: 0;
+                  opacity: 1;
+                }
+                img {
+                  transform: scale(1.1);
+                }
+              }
+            }
+          }
+        }
+        &.card-cont {
+          grid-gap: 50px;
+
+          .card {
+            // background-color: rgb(230, 230, 230);
+            overflow: hidden;
+            opacity: 0;
+            margin-bottom: 50px;
+            // color: rgb(30, 30, 30);
+
+            &:last-child {
+              margin-top: 50px;
+              margin-bottom: 0px;
+            }
+            .img-cont {
+              height: 300px;
+              position: relative;
+
+              img {
+                height: 100%;
+                width: 100%;
+                display: block;
+                object-fit: cover;
+                object-position: top center;
+              }
+              .social {
+                height: max-content;
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto 0;
+                padding-right: 10px;
+
+                a {
+                  height: 40px;
+                  width: 40px;
+                  display: block;
+                  border-radius: 50%;
+                  color: rgb(100, 100, 100);
+                  background-color: white;
+                  margin-bottom: 10px;
+                  opacity: 0;
+                  transition: 0.3s;
+                  transform: translateX(30px);
+                  text-align: center;
+
+                  &.fade-left-social {
+                    transform: translateX(0px);
+                    opacity: 1;
+                  }
+                  &:last-child {
+                    margin-bottom: 0;
+                  }
+                  &:hover {
+                    color: rgb(50, 50, 50);
+                  }
+                  i {
+                    line-height: 40px;
+                    font-size: 1.5rem;
+                  }
+                }
+              }
+            }
+            .content {
+              padding: 25px 0;
+              padding-right: 20px;
+
+              h4 {
+                font-size: 1.4rem;
+                margin-bottom: 3px;
+              }
+              p {
+                width: 100%;
+                // color: rgb(50, 50, 50);
+                margin-bottom: 30px;
               }
             }
           }
@@ -139,7 +227,7 @@ header {
     }
   }
 
-  .crached-background-rounded {
+  .scrached-background {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -161,7 +249,7 @@ header {
       top: 0;
       left: 0;
     }
-    .crach {
+    .scrach {
       height: 100%;
       width: 100%;
       position: absolute;
@@ -170,22 +258,16 @@ header {
       overflow: hidden;
 
       &:nth-child(2) {
-        // animation: animate-crach_2 3s ease-out forwards;
-
         .sub-bg {
           transform: scale(1.2) rotateZ(1deg);
         }
       }
       &:nth-child(3) {
-        // animation: animate-crach_3 4s ease-out forwards;
-
         .sub-bg {
           transform: scale(1.4) rotateZ(2deg);
         }
       }
       &:nth-child(4) {
-        // animation: animate-crach_4 5s ease-out forwards;
-
         .sub-bg {
           transform: scale(1.6) rotateZ(3deg);
         }
@@ -206,7 +288,6 @@ header {
   padding: 0.8em 1.8em;
   margin-top: 20px;
   display: inline-block;
-  opacity: 0;
 
   &::after {
     content: "";
@@ -227,8 +308,23 @@ header {
   }
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+
+  p {
+    width: 1400px;
+    margin: 0 auto;
+    padding: 30px 50px;
+    text-align: center;
+  }
+}
+
 // Animations ----------------
-@keyframes animate-crach_2 {
+@keyframes animate-crach_1 {
   from {
     clip-path: circle(40% at 12% 6%);
   }
@@ -236,7 +332,7 @@ header {
     clip-path: circle(50% at 14% 8%);
   }
 }
-@keyframes animate-crach_3 {
+@keyframes animate-crach_2 {
   from {
     clip-path: circle(30% at 8% 5%);
   }
@@ -245,12 +341,38 @@ header {
   }
 }
 
-@keyframes animate-crach_4 {
+@keyframes animate-crach_3 {
   from {
     clip-path: circle(15% at 6% 4%);
   }
   to {
     clip-path: circle(25% at 8% 8%);
+  }
+}
+// == broken
+@keyframes animate-crach_4 {
+  from {
+    clip-path: polygon(90% 0, 100% 0, 100% 100%, 60% 100%);
+  }
+  to {
+    clip-path: polygon(65% 0, 100% 0, 100% 100%, 40% 100%);
+  }
+}
+@keyframes animate-crach_5 {
+  from {
+    clip-path: polygon(95% 0, 100% 0, 100% 100%, 85% 100%);
+  }
+  to {
+    clip-path: polygon(80% 0, 100% 0, 100% 100%, 60% 100%);
+  }
+}
+
+@keyframes animate-crach_6 {
+  from {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 90% 100%);
+  }
+  to {
+    clip-path: polygon(90% 0, 100% 0, 100% 100%, 80% 100%);
   }
 }
 
@@ -262,6 +384,16 @@ header {
   }
   to {
     transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes fade_left {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
     opacity: 1;
   }
 }
@@ -284,4 +416,32 @@ header {
     display: inline;
     position: relative;
   }
+}
+
+.fade-up {
+  animation: fade_up 0.8s ease-out forwards;
+}
+
+.scrach-animation-1 {
+  animation: animate-crach_1 3s ease-out forwards;
+}
+.scrach-animation-2 {
+  animation: animate-crach_2 4s ease-out forwards;
+}
+.scrach-animation-3 {
+  animation: animate-crach_3 5s ease-out forwards;
+}
+
+.scrach-animation-4 {
+  animation: animate-crach_4 3s ease-out forwards;
+}
+.scrach-animation-5 {
+  animation: animate-crach_5 4s ease-out forwards;
+}
+.scrach-animation-6 {
+  animation: animate-crach_6 5s ease-out forwards;
+}
+
+.splited_text_animate {
+  animation: fade_up_splited 0.3s ease-out forwards;
 }

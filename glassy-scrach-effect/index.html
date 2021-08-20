@@ -11,6 +11,13 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <style>
       * {
         padding: 0;
@@ -20,6 +27,7 @@
       body {
         color: white;
         font-family: "Poppins", sans-serif;
+        position: relative;
       }
       p {
         width: 43ch;
@@ -27,7 +35,7 @@
       }
       h1 {
         font-size: 5rem;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
       }
     </style>
     <link rel="stylesheet" href="./main.css" />
@@ -39,11 +47,17 @@
         <a href="#">Contact us</a>
       </div>
     </header>
-    <div class="main-sect">
+    <div class="main-sect portfollio">
       <div class="grid">
         <div class="col">
-          <h1 class="splited_text_animate">Glassy splite fluid effect</h1>
-          <p class="fade_up_el" data-animate_delay="0ms">
+          <h1
+            class="splited_text_animate"
+            data-animation_class="splited_text_animate"
+            data-animation_delay="30"
+          >
+            We prepare mordern web
+          </h1>
+          <p class="fade_up_el" data-animation_class="fade-up">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur,
             velit magni non officiis ullam eum voluptate quae rerum cum
             repellendus, ipsam laudantium neque, quia harum exercitationem.
@@ -52,11 +66,17 @@
           <a
             class="primary-button fade_up_el"
             href="#"
-            data-animate_delay="0.3s"
-            >View main site</a
+            data-animation_delay="300"
+            data-animation_class="fade-up"
+            >View main potifolio</a
           >
         </div>
-        <div class="col multiple_el_animate" data-overall_delay="600">
+        <div
+          class="col multiple_el_animate box-cont"
+          data-overall_delay="600"
+          data-animation_class="fade-up"
+          data-animation_delay="300"
+        >
           <div class="box">
             <p><span>Portfollio 1</span></p>
             <a href="#" class="img_cont">
@@ -83,24 +103,31 @@
           </div>
         </div>
       </div>
-      <div class="crached-background-rounded">
+      <div class="scrached-background">
         <div class="main-bg"></div>
-        <div class="crach">
+        <div class="scrach" data-animation_class="scrach-animation-1">
           <div class="sub-bg"></div>
         </div>
-        <div class="crach">
+        <div class="scrach" data-animation_class="scrach-animation-2">
           <div class="sub-bg"></div>
         </div>
-        <div class="crach">
+        <div class="scrach" data-animation_class="scrach-animation-3">
           <div class="sub-bg"></div>
         </div>
       </div>
     </div>
-    <div class="main-sect">
+
+    <div class="main-sect about">
       <div class="grid">
         <div class="col">
-          <h1 class="splited_text_animate">Glassy splite fluid effect</h1>
-          <p class="fade_up_el" data-animate_delay="0ms">
+          <h1
+            class="splited_text_animate"
+            data-animation_class="splited_text_animate"
+            data-animation_delay="30"
+          >
+            About our community
+          </h1>
+          <p class="fade_up_el" data-animation_class="fade-up">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur,
             velit magni non officiis ullam eum voluptate quae rerum cum
             repellendus, ipsam laudantium neque, quia harum exercitationem.
@@ -109,50 +136,75 @@
           <a
             class="primary-button fade_up_el"
             href="#"
-            data-animate_delay="0.3s"
-            >View main site</a
+            data-animation_delay="300"
+            data-animation_class="fade-up"
+            >Contact us now</a
           >
         </div>
-        <div class="col multiple_el_animate" data-overall_delay="600">
-          <div class="box">
-            <p><span>Portfollio 1</span></p>
-            <a href="#" class="img_cont">
-              <img src="./img/main-bg.jpg" alt="" />
-            </a>
+        <div
+          class="col multiple_el_animate card-cont"
+          data-overall_delay="600"
+          data-animation_class="fade-up"
+          data-animation_delay="300"
+        >
+          <div class="card">
+            <div class="img-cont">
+              <img src="./img/pic-1.jpeg" alt="" />
+              <div
+                class="social multiple_el_animate_hover"
+                data-animation_class="fade-left-social"
+                data-animation_delay="100"
+                data-parent_el="2"
+              >
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="content">
+              <h4>MD. Mahadi Hasan</h4>
+              <p>Full-stack developer, Ui/Ux designer</p>
+            </div>
           </div>
-          <div class="box">
-            <p><span>Portfollio 2</span></p>
-            <a href="#" class="img_cont">
-              <img src="./img/main-bg.jpg" alt="" />
-            </a>
-          </div>
-          <div class="box">
-            <p><span>Portfollio 3</span></p>
-            <a href="#" class="img_cont">
-              <img src="./img/main-bg.jpg" alt="" />
-            </a>
-          </div>
-          <div class="box">
-            <p><span>Portfollio 4</span></p>
-            <a href="#" class="img_cont">
-              <img src="./img/main-bg.jpg" alt="" />
-            </a>
+          <div class="card">
+            <div class="img-cont">
+              <img src="./img/pic-2.jpeg" alt="" />
+              <div
+                class="social multiple_el_animate_hover"
+                data-animation_class="fade-left-social"
+                data-animation_delay="100"
+                data-parent_el="2"
+              >
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+            <div class="content">
+              <h4>MD. Abdullah</h4>
+              <p>Front-end developer, Ui/Ux designer</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="crached-background-rounded">
+      <div class="scrached-background">
         <div class="main-bg"></div>
-        <div class="crach">
+        <div class="scrach" data-animation_class="scrach-animation-4">
           <div class="sub-bg"></div>
         </div>
-        <div class="crach">
+        <div class="scrach" data-animation_class="scrach-animation-5">
           <div class="sub-bg"></div>
         </div>
-        <div class="crach">
+        <div class="scrach" data-animation_class="scrach-animation-6">
           <div class="sub-bg"></div>
         </div>
       </div>
     </div>
+
+    <footer>
+      <p>DeveloperText landing page © 2021</p>
+    </footer>
+
     <script src="./main.js"></script>
   </body>
 </html>
