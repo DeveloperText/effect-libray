@@ -19,6 +19,9 @@
       referrerpolicy="no-referrer"
     />
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       * {
         padding: 0;
         margin: 0;
@@ -28,6 +31,9 @@
         color: white;
         font-family: "Poppins", sans-serif;
         position: relative;
+      }
+      body.loading {
+        overflow: hidden;
       }
       p {
         width: 43ch;
@@ -40,7 +46,49 @@
     </style>
     <link rel="stylesheet" href="./main.css" />
   </head>
-  <body>
+  <body class="loading">
+    <div id="pre-loader" class="loading">
+      <div class="cont">
+        <div class="col">
+          <div
+            class="loading-animate multiple_el_animate"
+            data-animation_class="fade-down"
+            data-animation_delay="100"
+            data-overall_delay="300"
+          >
+            <span class="box"></span>
+            <span class="box"></span>
+            <span class="box"></span>
+          </div>
+          <h1
+            class="splited_text_animate"
+            data-animation_class="splited_text_animate"
+            data-animation_delay="30"
+          >
+            Loading
+          </h1>
+          <p
+            class="fade_up_el"
+            data-animation_class="fade-up"
+            data-overall_delay="100"
+          >
+            Please wait...
+          </p>
+        </div>
+        <div class="col">
+          <p
+            class="fade_up_el"
+            data-animation_class="fade-up"
+            data-overall_delay="200"
+          >
+            This is a massage that, this website is under construction. Fugit
+            sint ut obcaecati vel tempore suscipit a hic dolores corrupti, quasi
+            accusamus necessitatibus.
+          </p>
+        </div>
+      </div>
+      <div class="extra-loader"></div>
+    </div>
     <header>
       <div class="grid">
         <p>DEVELOPER TEXT</p>
@@ -78,27 +126,27 @@
           data-animation_delay="300"
         >
           <div class="box">
-            <p><span>Portfollio 1</span></p>
+            <p><span>Our main site 1</span></p>
             <a href="#" class="img_cont">
-              <img src="./img/main-bg.jpg" alt="" />
+              <img src="./img/project_1.JPG" alt="" />
             </a>
           </div>
           <div class="box">
-            <p><span>Portfollio 2</span></p>
+            <p><span>Our first project 2</span></p>
             <a href="#" class="img_cont">
-              <img src="./img/main-bg.jpg" alt="" />
+              <img src="./img/project_2.JPG" alt="" />
             </a>
           </div>
           <div class="box">
-            <p><span>Portfollio 3</span></p>
+            <p><span>Our practice 3</span></p>
             <a href="#" class="img_cont">
-              <img src="./img/main-bg.jpg" alt="" />
+              <img src="./img/project_3.JPG" alt="" />
             </a>
           </div>
           <div class="box">
-            <p><span>Portfollio 4</span></p>
+            <p><span>This site 4</span></p>
             <a href="#" class="img_cont">
-              <img src="./img/main-bg.jpg" alt="" />
+              <img src="./img/project_4.JPG" alt="" />
             </a>
           </div>
         </div>

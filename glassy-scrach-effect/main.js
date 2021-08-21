@@ -5,8 +5,15 @@ const innerHeight = window.innerHeight;
 const innerWidth = window.innerWidth;
 const scrollAnimateOffsetHeight = innerHeight - 50;
 const scrollAnimateOffsetHeight_2 = innerHeight - innerHeight / 4;
+window.scrollTo(0, 0);
 
 // ---------- Splited Text Effect & Multiple element's animation----------
+const bodyEl = document.body;
+const preLoaderEl = document.querySelector("#pre-loader");
+const loading_animatorEl = document.querySelector(".loading-animate");
+const main_loader = document.querySelector(".main-loader");
+const extra_loader = document.querySelector(".extra-loader");
+
 const allSplitedTextEls = document.querySelectorAll(".splited_text_animate");
 const allMultipleAnimateEls = document.querySelectorAll(".multiple_el_animate");
 const fadeUpEls = document.querySelectorAll(".fade_up_el");
@@ -116,27 +123,66 @@ const callMultipleAnimateElHover = function (...mainParentEls) {
   });
 };
 
+// ---------- For Multiple element's animation Auto ----------
+const callMultipleAnimateElAuto = function (...mainParentEls) {
+  mainParentEls.forEach(function (mainParentEl) {
+    const animation_delay = mainParentEl.dataset.animation_delay ?? 0;
+    const animationClass = mainParentEl.dataset.animation_class;
+    const callAnimation = function (addClass) {
+      let timer = 0;
+      const childrenEls = mainParentEl.children;
+      for (let i = 0; i < childrenEls.length; i++) {
+        const childrenEl = childrenEls[i];
+        setTimeout(function () {
+          if (addClass) childrenEl.classList.add(animationClass);
+          else childrenEl.classList.remove(animationClass);
+        }, timer);
+        timer += Number(animation_delay);
+      }
+      timer = 0;
+    };
+    callAnimation();
+  });
+};
+
 // ------ call the function -----
 // ---------- Now calling the functions on scroll ----------
 window.addEventListener("scroll", function () {
-  // const animateOnScroll = setTimeout(function () {
   scrachedBgEls.forEach(function (scrachedBgRoundedEl) {
     const childrenEls = scrachedBgRoundedEl.children;
     animateEl(childrenEls[1], childrenEls[2], childrenEls[3]);
   });
   animateEl(...fadeUpEls);
   callMultipleAnimateEl(...allSplitedTextEls, ...allMultipleAnimateEls);
-  // }, 300);
-  // this.clearTimeout(animateOnScroll);
 });
 
 // ---------- Now calling the functions on hover ----------
 callMultipleAnimateElHover(...allMultipleAnimateElsHover);
 
 // ---------- calling the initial functions on load ----------
+
+// Pre-loader function ---------
+const preLoadeFunction = function () {
+  extra_loader.classList.add("start");
+  setTimeout(function () {
+    preLoaderEl.classList.remove("loading");
+    setTimeout(function () {
+      const childrenEls = scrachedBgEls[0].children;
+      animateEl(childrenEls[1], childrenEls[2], childrenEls[3]);
+      bodyEl.classList.remove("loading");
+      setTimeout(function () {
+        callMultipleAnimateEl(allSplitedTextEls[1], allMultipleAnimateEls[1]);
+        animateEl(fadeUpEls[2], fadeUpEls[3]);
+      }, 200);
+    }, 200);
+  }, 600);
+};
+
 setTimeout(function () {
   callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
   animateEl(fadeUpEls[0], fadeUpEls[1]);
-  const childrenEls = scrachedBgEls[0].children;
-  animateEl(childrenEls[1], childrenEls[2], childrenEls[3]);
-}, 600);
+  callMultipleAnimateElAuto(loading_animatorEl);
+  setTimeout(function () {
+    preLoadeFunction();
+  }, 1500);
+}, 500);

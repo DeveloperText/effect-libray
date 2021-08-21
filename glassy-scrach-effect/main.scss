@@ -1,3 +1,87 @@
+#pre-loader {
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(20, 20, 20);
+  background-image: linear-gradient(
+    130deg,
+    rgb(230, 50, 70),
+    rgb(115, 25, 115)
+  );
+  position: fixed;
+  top: -100%;
+  left: 0;
+  z-index: 15;
+  pointer-events: none;
+  transition: 1.3s;
+  display: block;
+
+  &.loading {
+    top: 0;
+    pointer-events: all;
+  }
+  .cont {
+    width: 1400px;
+    height: 100%;
+    padding: 0 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    .col {
+      width: 50%;
+
+      .loading-animate {
+        display: flex;
+        position: relative;
+
+        .box {
+          height: 5px;
+          width: 30px;
+          background-color: white;
+          margin-right: 10px;
+          opacity: 0;
+        }
+      }
+      h1,
+      p {
+        margin: 0;
+        opacity: 0;
+      }
+      &:last-child {
+        p {
+          width: 50ch;
+          margin-top: 50px;
+          display: flex;
+
+          &::before {
+            content: "";
+            height: 30px;
+            width: 3px;
+            background-color: white;
+            display: block;
+            flex-shrink: 0;
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+  .extra-loader {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    background-color: rgb(255, 190, 230);
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    transition: 0.5s;
+
+    &.start {
+      top: 0%;
+    }
+  }
+}
+
 header {
   width: 100%;
   height: 60px;
@@ -101,6 +185,7 @@ header {
                 display: block;
                 margin-left: 20px;
                 background: rgba(255, 255, 255, 0.5);
+                transition: 0.4s;
               }
             }
             .img_cont {
@@ -118,27 +203,40 @@ header {
                 transition: 0.5s;
               }
               &::after {
-                content: "- View project";
-                padding: 13px;
-                width: 100%;
+                content: "\f06e";
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                font-family: "Font Awesome 5 Free";
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
                 position: absolute;
                 bottom: -100%;
-                left: 0;
-                color: white;
-                font-size: 0.9rem;
-                background: rgba(0, 0, 0, 0.3);
+                right: 10px;
+                color: rgba(0, 0, 0, 0.7);
+                font-size: 1.3rem;
+                text-align: center;
+                line-height: 40px;
+                background: rgba(255, 255, 255, 0.7);
                 box-sizing: border-box;
-                transition: 0.3s;
+                transition: 0.4s;
                 opacity: 0;
+                box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
               }
-              &:hover {
+            }
+            &:hover {
+              p {
                 &::after {
-                  bottom: 0;
-                  opacity: 1;
+                  width: 100%;
+                  background-color: rgb(255, 255, 255);
                 }
-                img {
-                  transform: scale(1.1);
-                }
+              }
+              .img_cont::after {
+                bottom: 10px;
+                opacity: 1;
               }
             }
           }
@@ -147,11 +245,9 @@ header {
           grid-gap: 50px;
 
           .card {
-            // background-color: rgb(230, 230, 230);
             overflow: hidden;
             opacity: 0;
             margin-bottom: 50px;
-            // color: rgb(30, 30, 30);
 
             &:last-child {
               margin-top: 50px;
@@ -418,6 +514,24 @@ footer {
     opacity: 1;
   }
 }
+@keyframes fade-down {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  30% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
 @keyframes fade_left {
   from {
     transform: translateX(30px);
@@ -451,6 +565,9 @@ footer {
 
 .fade-up {
   animation: fade_up 0.8s ease-out forwards;
+}
+.fade-down {
+  animation: fade-down 1.5s infinite forwards;
 }
 
 .scrach-animation-1 {
