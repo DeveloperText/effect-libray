@@ -185,4 +185,4 @@ setTimeout(function () {
   setTimeout(function () {
     preLoadeFunction();
   }, 1500);
-}, 600);
+}, 800);
