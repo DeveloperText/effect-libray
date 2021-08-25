@@ -12,7 +12,7 @@
   left: 0;
   z-index: 15;
   pointer-events: none;
-  transition: 1.5s;
+  transition: 1s;
   display: block;
 
   &.loading {
@@ -313,7 +313,6 @@ header {
               }
               p {
                 width: 100%;
-                // color: rgb(50, 50, 50);
                 margin-bottom: 30px;
               }
             }
@@ -452,22 +451,6 @@ footer {
     clip-path: circle(40% at 10% 8%);
   }
 }
-
-@keyframes marque-down {
-  0% {
-    transform: translateY(-100%);
-  }
-  30% {
-    transform: translateY(0%);
-  }
-  70% {
-    transform: translateY(0%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
 @keyframes animate-crach_3 {
   from {
     clip-path: circle(15% at 6% 4%);
@@ -503,10 +486,25 @@ footer {
   }
 }
 
+@keyframes marque-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  30% {
+    transform: translateY(0%);
+  }
+  70% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
 // Fade ----
 @keyframes fade_up {
   from {
-    transform: translateY(30px);
+    transform: translateY(50px);
     opacity: 0;
   }
   to {
@@ -534,7 +532,7 @@ footer {
 }
 @keyframes fade_left {
   from {
-    transform: translateX(30px);
+    transform: translateX(50px);
     opacity: 0;
   }
   to {
@@ -556,6 +554,7 @@ footer {
 }
 .splited_text_animate {
   animation: fade_up 2s ease-out forwards;
+
   span {
     opacity: 0;
     display: inline;
@@ -564,7 +563,7 @@ footer {
 }
 
 .fade-up {
-  animation: fade_up 0.8s ease-out forwards;
+  animation: fade_up 1.5s forwards;
 }
 .fade-down {
   animation: fade-down 1.5s infinite forwards;

@@ -128,14 +128,13 @@ const callMultipleAnimateElAuto = function (...mainParentEls) {
   mainParentEls.forEach(function (mainParentEl) {
     const animation_delay = mainParentEl.dataset.animation_delay ?? 0;
     const animationClass = mainParentEl.dataset.animation_class;
-    const callAnimation = function (addClass) {
+    const callAnimation = function () {
       let timer = 0;
       const childrenEls = mainParentEl.children;
       for (let i = 0; i < childrenEls.length; i++) {
         const childrenEl = childrenEls[i];
         setTimeout(function () {
-          if (addClass) childrenEl.classList.add(animationClass);
-          else childrenEl.classList.remove(animationClass);
+          childrenEl.classList.add(animationClass);
         }, timer);
         timer += Number(animation_delay);
       }
@@ -164,18 +163,18 @@ callMultipleAnimateElHover(...allMultipleAnimateElsHover);
 // Pre-loader function ---------
 const preLoadeFunction = function () {
   extra_loader.classList.add("start");
+  bodyEl.classList.remove("loading");
   setTimeout(function () {
     preLoaderEl.classList.remove("loading");
     setTimeout(function () {
       const childrenEls = scrachedBgEls[0].children;
       animateEl(childrenEls[1], childrenEls[2], childrenEls[3]);
-      bodyEl.classList.remove("loading");
       setTimeout(function () {
         callMultipleAnimateEl(allSplitedTextEls[1], allMultipleAnimateEls[1]);
         animateEl(fadeUpEls[2], fadeUpEls[3]);
-      }, 200);
+      }, 600);
     }, 200);
-  }, 1600);
+  }, 800);
 };
 
 window.addEventListener("load", function () {
