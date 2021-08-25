@@ -174,16 +174,16 @@ const preLoadeFunction = function () {
         animateEl(fadeUpEls[2], fadeUpEls[3]);
       }, 600);
     }, 200);
-  }, 800);
+  }, 700);
 };
 
-window.addEventListener("load", function () {
+setTimeout(function () {
+  callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
+  animateEl(fadeUpEls[0], fadeUpEls[1]);
+  callMultipleAnimateElAuto(loading_animatorEl);
   setTimeout(function () {
-    callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
-    animateEl(fadeUpEls[0], fadeUpEls[1]);
-    callMultipleAnimateElAuto(loading_animatorEl);
-    setTimeout(function () {
+    window.addEventListener("load", function () {
       preLoadeFunction();
-    }, 1500);
-  }, 500);
-});
+    });
+  }, 1500);
+}, 500);
