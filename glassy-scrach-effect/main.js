@@ -177,13 +177,13 @@ const preLoadeFunction = function () {
   }, 700);
 };
 
-setTimeout(function () {
-  callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
-  animateEl(fadeUpEls[0], fadeUpEls[1]);
-  callMultipleAnimateElAuto(loading_animatorEl);
+window.addEventListener("load", function () {
   setTimeout(function () {
-    window.addEventListener("load", function () {
+    callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
+    animateEl(fadeUpEls[0], fadeUpEls[1]);
+    callMultipleAnimateElAuto(loading_animatorEl);
+    setTimeout(function () {
       preLoadeFunction();
-    });
-  }, 1500);
-}, 500);
+    }, 1500);
+  }, 500);
+});
