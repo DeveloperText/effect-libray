@@ -1,5 +1,11 @@
 "use strict";
 
+setTimeout(function () {
+  callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
+  animateEl(fadeUpEls[0], fadeUpEls[1]);
+  callMultipleAnimateElAuto(loading_animatorEl);
+}, 1000);
+
 // ---------- Init Values --------------
 const innerHeight = window.innerHeight;
 const innerWidth = window.innerWidth;
@@ -182,9 +188,3 @@ window.addEventListener("load", function () {
     preLoadeFunction();
   }, 2000);
 });
-
-setTimeout(function () {
-  callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
-  animateEl(fadeUpEls[0], fadeUpEls[1]);
-  callMultipleAnimateElAuto(loading_animatorEl);
-}, 1000);
