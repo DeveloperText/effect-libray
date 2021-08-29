@@ -177,14 +177,14 @@ const preLoadeFunction = function () {
   }, 700);
 };
 
-setTimeout(function () {
+// setTimeout(function () {
   callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
   animateEl(fadeUpEls[0], fadeUpEls[1]);
   callMultipleAnimateElAuto(loading_animatorEl);
-}, 1000);
+// }, 300);
 
 window.addEventListener("load", function () {
   setTimeout(function () {
     preLoadeFunction();
-  }, 2000);
+  }, 1500);
 });
