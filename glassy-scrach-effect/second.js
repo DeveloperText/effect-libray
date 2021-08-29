@@ -38,14 +38,13 @@ const animateEl = function (...mainEls) {
     let isAnimated = mainEl.dataset.isAnimated ?? false;
     if (!isAnimated) {
       if (mainEl.getBoundingClientRect().top <= scrollAnimateOffsetHeight) {
-        const animationName = mainEl.dataset.animation_data[0];
-        const animationDuration = mainEl.dataset.animation_data[1] ?? 0;
-        const animationDelay = mainEl.dataset.animation_data[2] ?? 0;
-        const animationCount = mainEl.dataset.animation_data[3] ?? 1;
-        const animationTimingFunc =
-          mainEl.dataset.animation_data[4] ?? "linear";
-        const animationFillmode = mainEl.dataset.animation_data[5] ?? "forward";
-        mainEl.style.animation = `${animationName} ${animationDuration} ${animationDelay} ${animationTimingFunc} ${animationCount} ${animationFillmode}`;
+        const animation_delay = mainEl.dataset.animation_delay ?? 0;
+        const animationClass = mainEl.dataset.animation_class;
+        if (animation_delay)
+          setTimeout(function () {
+            mainEl.classList.add(animationClass);
+          }, animation_delay);
+        else mainEl.classList.add(animationClass);
         mainEl.dataset.isAnimated = true;
       }
     }
