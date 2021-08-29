@@ -1,11 +1,5 @@
 "use strict";
 
-setTimeout(function () {
-  callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
-  animateEl(fadeUpEls[0], fadeUpEls[1]);
-  callMultipleAnimateElAuto(loading_animatorEl);
-}, 1000);
-
 // ---------- Init Values --------------
 const innerHeight = window.innerHeight;
 const innerWidth = window.innerWidth;
@@ -183,8 +177,18 @@ const preLoadeFunction = function () {
   }, 700);
 };
 
+const startLoading = function (){
+  callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
+  animateEl(fadeUpEls[0], fadeUpEls[1]);
+  callMultipleAnimateElAuto(loading_animatorEl);
+}
+
 window.addEventListener("load", function () {
   setTimeout(function () {
     preLoadeFunction();
   }, 2000);
 });
+
+setTimeout(function () {
+  startLoading()
+}, 1000);
