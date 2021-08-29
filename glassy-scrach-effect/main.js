@@ -181,10 +181,10 @@ setTimeout(function () {
   callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
   animateEl(fadeUpEls[0], fadeUpEls[1]);
   callMultipleAnimateElAuto(loading_animatorEl);
-}, 1000);
+}, 600);
 
 window.addEventListener("load", function () {
   setTimeout(function () {
     preLoadeFunction();
-  }, 1500);
+  }, 1600);
 });
