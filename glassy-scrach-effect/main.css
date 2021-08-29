@@ -50,8 +50,8 @@
   opacity: 0;
 }
 
-#pre-loader .cont .col h1,
-#pre-loader .cont .col p {
+#pre-loader h1,
+#pre-loader p {
   margin: 0;
   opacity: 0;
 }
