@@ -191,4 +191,4 @@ window.addEventListener("load", function () {
 
 setTimeout(function () {
   startLoading()
-}, 500);
+}, 700);
