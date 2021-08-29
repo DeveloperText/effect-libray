@@ -177,18 +177,16 @@ const preLoadeFunction = function () {
   }, 700);
 };
 
-const startLoading = function (){
-  callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
-  animateEl(fadeUpEls[0], fadeUpEls[1]);
-  callMultipleAnimateElAuto(loading_animatorEl);
-}
+
 
 window.addEventListener("load", function () {
   setTimeout(function () {
-    preLoadeFunction();
-  }, 2000);
+    callMultipleAnimateEl(allSplitedTextEls[0], allMultipleAnimateEls[0]);
+    animateEl(fadeUpEls[0], fadeUpEls[1]);
+    callMultipleAnimateElAuto(loading_animatorEl);
+    setTimeout(function () {
+      preLoadeFunction();
+    }, 1500);
+  }, 500);
 });
 
-setTimeout(function () {
-  startLoading()
-}, 700);
